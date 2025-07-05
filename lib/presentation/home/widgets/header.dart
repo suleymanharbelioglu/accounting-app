@@ -8,7 +8,7 @@ class Header extends StatelessWidget {
     return Container(
       height: 80,
       width: double.infinity,
-      color: Colors.white,
+      // color: Colors.white,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
