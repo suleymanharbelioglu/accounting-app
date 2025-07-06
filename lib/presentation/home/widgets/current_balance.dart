@@ -13,7 +13,25 @@ class CurrentBalance extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [Text("Güncel Bakiye"), Text("₺0,00")],
+        children: [
+          Text(
+            "Güncel Bakiye",
+            style: TextStyle(
+              fontSize: 20, // başlık boyutu
+              fontWeight: FontWeight.bold, // kalın yazı
+              color: Colors.black87,
+            ),
+          ),
+          SizedBox(height: 4), // dikey boşluk
+          Text(
+            "₺0,00",
+            style: TextStyle(
+              fontSize: 26, // rakamlar daha büyük
+              fontWeight: FontWeight.bold,
+              color: Colors.green.shade700, // renk isteğe göre değiştirilebilir
+            ),
+          ),
+        ],
       ),
     );
   }

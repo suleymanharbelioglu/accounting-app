@@ -19,34 +19,41 @@ class TodoList extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Yapılacaklar Listesi"),
+              Text(
+                "Yapılacaklar Listesi",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
               TextButton.icon(
                 onPressed: () {},
-                label: Text("Bu Hafta"),
+                label: Text(
+                  "Bu Hafta",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
                 icon: Icon(Icons.arrow_downward_rounded),
                 style: TextButton.styleFrom(
-                  side: BorderSide(
-                    color: Colors.grey, // çizgi rengi
-                    width: 1, // çizgi kalınlığı
-                  ),
+                  side: BorderSide(color: Colors.grey, width: 1),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8), // köşe yuvarlama
+                    borderRadius: BorderRadius.circular(8),
                   ),
                   padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 ),
               ),
             ],
           ),
-          Text("30 haziran - 6 Temmuz"),
-          Divider(
-            color: Colors.grey.shade300, // açık gri
-            thickness: 1, // çizgi kalınlığı
-            height: 20, // üst-alt boşluk
+          Text(
+            "30 haziran - 6 Temmuz",
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
+          Divider(color: Colors.grey.shade300, thickness: 1, height: 20),
           Expanded(
             child: Container(
               width: double.infinity,
-              child: Center(child: Text("Bütün işler tamam ")),
+              child: Center(
+                child: Text(
+                  "Bütün işler tamam ",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+              ),
             ),
           ),
         ],

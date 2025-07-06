@@ -17,22 +17,23 @@ class Collections extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Toplam Tahsilat"),
-          Text("₺0,00"),
-          Divider(
-            color: Colors.grey.shade300, // açık gri
-            thickness: 1, // çizgi kalınlığı
-            height: 20, // üst-alt boşluk
+          Text(
+            "Toplam Tahsilat",
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
+          Text(
+            "₺0,00",
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          ),
+          Divider(color: Colors.grey.shade300, thickness: 1, height: 20),
           SizedBox(height: 10),
           Container(
-            // color: Colors.amber,
             height: 200,
             width: double.infinity,
             child: PieChart(
               PieChartData(
-                sectionsSpace: 2, // dilimler arası boşluk
-                centerSpaceRadius: 60, // ortası boş bırakmak istersen
+                sectionsSpace: 2,
+                centerSpaceRadius: 60,
                 sections: [
                   PieChartSectionData(
                     value: 33,
@@ -63,7 +64,6 @@ class Collections extends StatelessWidget {
               SizedBox(height: 5),
               collectionBarRow(Colors.green, "Gecikmiş Çek", 0.00),
               SizedBox(height: 5),
-
               collectionBarRow(Colors.grey.shade400, "Planlanmamış", 0.00),
             ],
           ),
@@ -76,8 +76,20 @@ class Collections extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Row(children: [colorDot(dotColor), SizedBox(width: 5), Text(barText)]),
-        Text("₺" + value.toString()),
+        Row(
+          children: [
+            colorDot(dotColor),
+            SizedBox(width: 5),
+            Text(
+              barText,
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+        Text(
+          "₺" + value.toString(),
+          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+        ),
       ],
     );
   }
