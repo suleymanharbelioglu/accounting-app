@@ -1,7 +1,6 @@
 import 'package:accounting_app/common/helper/menu/menu_helper.dart';
 import 'package:accounting_app/common/helper/navigator/app_navigator.dart';
 import 'package:accounting_app/core/configs/theme/app_colors.dart';
-import 'package:accounting_app/presentation/sales/pages/sales.dart';
 import 'package:flutter/material.dart';
 
 class MenuPage extends StatelessWidget {
@@ -31,7 +30,7 @@ class MenuPage extends StatelessWidget {
             return menuContainer(
               MenuHelper.iconList[index],
               MenuHelper.liste[index],
-              SalesPage(),
+              MenuHelper.menuPageList[index],
               context,
             );
           },
