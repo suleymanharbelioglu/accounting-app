@@ -13,10 +13,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
-  static final List<Widget> _pages = <Widget>[
-    const CurrentStatePage(),
-    MenuPage(),
-  ];
+  static final List<Widget> _pages = <Widget>[CurrentStatePage(), MenuPage()];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -80,12 +77,67 @@ class _HomePageState extends State<HomePage> {
         child: FloatingActionButton(
           shape: CircleBorder(),
           onPressed: () {
-            // Ortadaki + butonuna tıklanınca yapılacak
+            fastTransactionBottomSheet();
           },
           backgroundColor: Colors.green,
           child: const Icon(Icons.add, color: Colors.white, size: 40),
         ),
       ),
     );
+  }
+
+  Future<dynamic> fastTransactionBottomSheet() {
+    return showModalBottomSheet(
+            context: context,
+            isScrollControlled: true,
+            backgroundColor: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+            ),
+            builder: (context) {
+              return FractionallySizedBox(
+                heightFactor: 0.5, // Alt panel ekranın %50'si kadar yüksek
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Başlık ve Kapatma ikonu
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 12,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Hızlı İşlemler",
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.close),
+                            onPressed: () {
+                              Navigator.pop(context); // Sheet’i kapat
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                    Divider(),
+
+                    // İçerik buraya
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Text(
+                        "Buraya hızlı işlem içerikleri eklenebilir.",
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
   }
 }

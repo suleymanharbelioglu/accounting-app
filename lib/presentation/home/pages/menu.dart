@@ -1,42 +1,12 @@
+import 'package:accounting_app/common/helper/menu/menu_helper.dart';
 import 'package:accounting_app/common/helper/navigator/app_navigator.dart';
 import 'package:accounting_app/core/configs/theme/app_colors.dart';
 import 'package:accounting_app/presentation/sales/pages/sales.dart';
 import 'package:flutter/material.dart';
 
 class MenuPage extends StatelessWidget {
-  MenuPage({super.key});
-  final List<String> liste = [
-    'Satışlar',
-    'Giderler',
-    'Teklifler',
-    'Gelen e-Faturalar',
-    'Müşteriler',
-    'Tedarikçiler',
-    'Hizmet ve Ürünler',
-    'Depo',
-    'Depolar Arası Transfer',
-    'Kasa ve Bankalar',
-    'Çekler',
-    'Çalışlanlar',
-    'Giden İrsaliyeler',
-    'Gelen İrsaliyeler',
-  ];
-  final List<IconData> iconList = [
-    Icons.shopping_cart, // Satışlar
-    Icons.money_off, // Giderler
-    Icons.description, // Teklifler
-    Icons.receipt_long, // Gelen e-Faturalar
-    Icons.people, // Müşteriler
-    Icons.local_shipping, // Tedarikçiler
-    Icons.inventory, // Hizmet ve Ürünler
-    Icons.warehouse, // Depo
-    Icons.compare_arrows, // Depolar Arası Transfer
-    Icons.account_balance, // Kasa ve Bankalar
-    Icons.request_quote, // Çekler
-    Icons.badge, // Çalışlanlar
-    Icons.upload_file, // Giden İrsaliyeler
-    Icons.download, // Gelen İrsaliyeler
-  ];
+  const MenuPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,11 +26,11 @@ class MenuPage extends StatelessWidget {
             crossAxisCount: 2,
             childAspectRatio: 1.7,
           ),
-          itemCount: liste.length,
+          itemCount: MenuHelper.liste.length,
           itemBuilder: (BuildContext context, int index) {
             return menuContainer(
-              iconList[index],
-              liste[index],
+              MenuHelper.iconList[index],
+              MenuHelper.liste[index],
               SalesPage(),
               context,
             );

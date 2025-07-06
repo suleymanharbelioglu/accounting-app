@@ -1,3 +1,4 @@
+import 'package:accounting_app/core/configs/theme/app_theme.dart';
 import 'package:accounting_app/presentation/splash/bloc/splash_cubit.dart';
 import 'package:accounting_app/presentation/splash/pages/splash.dart';
 import 'package:accounting_app/service_locator.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (context) => SplashCubit()..appStarted(),
       child: MaterialApp(
-        // theme: AppTheme.appTheme,
+        theme: AppTheme.appTheme,
         debugShowCheckedModeBanner: false,
         home: const SplashPage(),
       ),
