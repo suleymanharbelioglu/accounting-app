@@ -23,7 +23,7 @@ class SplashPage extends StatelessWidget {
         }
       },
       child: Scaffold(
-        backgroundColor: AppColors.primary,
+        backgroundColor: AppColors.background,
         body: Center(
           child: SizedBox(
             height: 100,

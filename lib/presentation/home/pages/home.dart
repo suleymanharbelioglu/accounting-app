@@ -1,3 +1,4 @@
+import 'package:accounting_app/common/widgets/button/floating_act_button.dart';
 import 'package:accounting_app/core/configs/theme/app_colors.dart';
 import 'package:accounting_app/presentation/home/pages/current_state.dart';
 import 'package:accounting_app/presentation/home/pages/menu.dart';
@@ -25,7 +26,11 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _pages[_selectedIndex],
-      floatingActionButton: floatingActButton(),
+      floatingActionButton: FloatingActButton(
+        size: 80,
+        onPressed: fastTransactionBottomSheet,
+        topPadding: 40,
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: bottomNavBar(),
     );
@@ -68,76 +73,56 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Padding floatingActButton() {
-    return Padding(
-      padding: const EdgeInsets.only(top: 40),
-      child: SizedBox(
-        height: 80,
-        width: 80,
-        child: FloatingActionButton(
-          shape: CircleBorder(),
-          onPressed: () {
-            fastTransactionBottomSheet();
-          },
-          backgroundColor: Colors.green,
-          child: const Icon(Icons.add, color: Colors.white, size: 40),
-        ),
-      ),
-    );
-  }
-
   Future<dynamic> fastTransactionBottomSheet() {
     return showModalBottomSheet(
-            context: context,
-            isScrollControlled: true,
-            backgroundColor: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-            ),
-            builder: (context) {
-              return FractionallySizedBox(
-                heightFactor: 0.5, // Alt panel ekranın %50'si kadar yüksek
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (context) {
+        return FractionallySizedBox(
+          heightFactor: 0.5, // Alt panel ekranın %50'si kadar yüksek
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Başlık ve Kapatma ikonu
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // Başlık ve Kapatma ikonu
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 12,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Hızlı İşlemler",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          IconButton(
-                            icon: Icon(Icons.close),
-                            onPressed: () {
-                              Navigator.pop(context); // Sheet’i kapat
-                            },
-                          ),
-                        ],
+                    Text(
+                      "Hızlı İşlemler",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Divider(),
-
-                    // İçerik buraya
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: Text(
-                        "Buraya hızlı işlem içerikleri eklenebilir.",
-                      ),
+                    IconButton(
+                      icon: Icon(Icons.close),
+                      onPressed: () {
+                        Navigator.pop(context); // Sheet’i kapat
+                      },
                     ),
                   ],
                 ),
-              );
-            },
-          );
+              ),
+              Divider(),
+
+              // İçerik buraya
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text("Buraya hızlı işlem içerikleri eklenebilir."),
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }
