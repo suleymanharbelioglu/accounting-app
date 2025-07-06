@@ -6,6 +6,7 @@ class CurrentBalance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.topCenter,
       // color: Colors.white,
       height: 80,
       width: double.infinity,

@@ -1,3 +1,4 @@
+import 'package:accounting_app/core/configs/theme/app_colors.dart';
 import 'package:accounting_app/presentation/home/pages/current_state.dart';
 import 'package:accounting_app/presentation/home/pages/menu.dart';
 import 'package:flutter/material.dart';
@@ -10,33 +11,80 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0; // Seçili sekmenin indeksi
+  int _selectedIndex = 0;
 
-  // Her bir sekme için gösterilecek basit widget'lar
-  static const List<Widget> _pages = <Widget>[CurrentStatePage(), MenuPage()];
+  static final List<Widget> _pages = <Widget>[
+    const CurrentStatePage(),
+    MenuPage(),
+  ];
 
-  // Sekmeye tıklandığında çalışan fonksiyon
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index; // Seçili indeksi güncelle
+      _selectedIndex = index;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pages[_selectedIndex], // Seçili indekse göre sayfayı göster
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Güncel Durum',
+      body: _pages[_selectedIndex],
+      floatingActionButton: floatingActButton(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: bottomNavBar(),
+    );
+  }
+
+  SizedBox bottomNavBar() {
+    return SizedBox(
+      height: 80,
+      child: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
+        notchMargin: 8,
+        color: AppColors.background,
+        child: SizedBox(
+          height: 80,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment:
+                MainAxisAlignment.spaceBetween, // ikonlar kenarlarda
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(left: 32.0),
+                child: IconButton(
+                  icon: const Icon(Icons.pie_chart, size: 35),
+                  color: _selectedIndex == 0 ? AppColors.primary : Colors.grey,
+                  onPressed: () => _onItemTapped(0),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 32.0),
+                child: IconButton(
+                  icon: const Icon(Icons.menu, size: 35),
+                  color: _selectedIndex == 1 ? AppColors.primary : Colors.grey,
+                  onPressed: () => _onItemTapped(1),
+                ),
+              ),
+            ],
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Menü'),
-        ],
-        currentIndex: _selectedIndex, // Hangi sekmenin seçili olduğunu belirtir
-        selectedItemColor: Colors.blue, // Seçili öğenin rengi
-        onTap: _onItemTapped, // Sekmeye tıklandığında ne olacağını belirler
+        ),
+      ),
+    );
+  }
+
+  Padding floatingActButton() {
+    return Padding(
+      padding: const EdgeInsets.only(top: 40),
+      child: SizedBox(
+        height: 80,
+        width: 80,
+        child: FloatingActionButton(
+          shape: CircleBorder(),
+          onPressed: () {
+            // Ortadaki + butonuna tıklanınca yapılacak
+          },
+          backgroundColor: Colors.green,
+          child: const Icon(Icons.add, color: Colors.white, size: 40),
+        ),
       ),
     );
   }

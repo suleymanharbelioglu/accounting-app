@@ -23,6 +23,7 @@ class CurrentStatePage extends StatelessWidget {
             SizedBox(height: 10),
             Expanded(
               child: ListView(
+                padding: EdgeInsets.zero,
                 children: [
                   CurrentBalance(),
                   SizedBox(height: 10),
