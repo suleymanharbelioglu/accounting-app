@@ -1,8 +1,5 @@
-import 'package:accounting_app/common/widgets/button/floating_act_button.dart';
-import 'package:accounting_app/presentation/sales/widgets/all.dart';
-import 'package:accounting_app/presentation/sales/widgets/canceled.dart';
-import 'package:accounting_app/presentation/sales/widgets/collectible.dart';
-import 'package:accounting_app/presentation/sales/widgets/overdue.dart';
+import 'package:accounting_app/presentation/checks/widgets/issued.dart';
+import 'package:accounting_app/presentation/checks/widgets/received.dart';
 import 'package:flutter/material.dart';
 
 class ChecksPage extends StatefulWidget {
@@ -19,7 +16,7 @@ class _ChecksPageState extends State<ChecksPage>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 4, vsync: this);
+    _tabController = TabController(length: 2, vsync: this);
   }
 
   @override
@@ -42,7 +39,7 @@ class _ChecksPageState extends State<ChecksPage>
           ),
         ),
         title: Text(
-          "Satışlar",
+          "Çekler",
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
         ),
         centerTitle: true,
@@ -56,12 +53,7 @@ class _ChecksPageState extends State<ChecksPage>
       ),
       body: TabBarView(
         controller: _tabController,
-        children: const [All(), Collectible(), Overdue(), Canceled()],
-      ),
-      floatingActionButton: FloatingActButton(
-        size: 70,
-        onPressed: () {},
-        bottomPadding: 20,
+        children: const [Received(), Issued()],
       ),
     );
   }
@@ -73,25 +65,13 @@ class _ChecksPageState extends State<ChecksPage>
       tabs: const [
         Tab(
           child: Text(
-            "Tümü",
+            "Alınan",
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
         ),
         Tab(
           child: Text(
-            "Tahsil Edilecek",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-        ),
-        Tab(
-          child: Text(
-            "Gecikmiş",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-        ),
-        Tab(
-          child: Text(
-            "İptal Edilen",
+            "Verilen",
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
         ),

@@ -1,15 +1,15 @@
 import 'package:accounting_app/common/widgets/button/floating_act_button.dart';
-import 'package:accounting_app/presentation/sales/widgets/all.dart';
-import 'package:accounting_app/presentation/sales/widgets/canceled.dart';
 import 'package:accounting_app/presentation/sales/widgets/collectible.dart';
-import 'package:accounting_app/presentation/sales/widgets/overdue.dart';
+import 'package:accounting_app/presentation/services_and_products/widgets/all.dart';
+import 'package:accounting_app/presentation/services_and_products/widgets/critical_stocks.dart';
 import 'package:flutter/material.dart';
 
 class ServicesAndProductsPage extends StatefulWidget {
   const ServicesAndProductsPage({super.key});
 
   @override
-  State<ServicesAndProductsPage> createState() => _ServicesAndProductsPageState();
+  State<ServicesAndProductsPage> createState() =>
+      _ServicesAndProductsPageState();
 }
 
 class _ServicesAndProductsPageState extends State<ServicesAndProductsPage>
@@ -19,7 +19,7 @@ class _ServicesAndProductsPageState extends State<ServicesAndProductsPage>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 4, vsync: this);
+    _tabController = TabController(length: 2, vsync: this);
   }
 
   @override
@@ -42,7 +42,7 @@ class _ServicesAndProductsPageState extends State<ServicesAndProductsPage>
           ),
         ),
         title: Text(
-          "Satışlar",
+          "Hizmet ve Ürünler",
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
         ),
         centerTitle: true,
@@ -56,7 +56,7 @@ class _ServicesAndProductsPageState extends State<ServicesAndProductsPage>
       ),
       body: TabBarView(
         controller: _tabController,
-        children: const [All(), Collectible(), Overdue(), Canceled()],
+        children: const [All(), CriticalStocks()],
       ),
       floatingActionButton: FloatingActButton(
         size: 70,
@@ -79,19 +79,7 @@ class _ServicesAndProductsPageState extends State<ServicesAndProductsPage>
         ),
         Tab(
           child: Text(
-            "Tahsil Edilecek",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-        ),
-        Tab(
-          child: Text(
-            "Gecikmiş",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-        ),
-        Tab(
-          child: Text(
-            "İptal Edilen",
+            "Kritik Stoklar",
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
         ),

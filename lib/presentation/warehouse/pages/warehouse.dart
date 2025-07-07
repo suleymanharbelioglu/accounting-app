@@ -1,8 +1,5 @@
 import 'package:accounting_app/common/widgets/button/floating_act_button.dart';
-import 'package:accounting_app/presentation/sales/widgets/all.dart';
-import 'package:accounting_app/presentation/sales/widgets/canceled.dart';
-import 'package:accounting_app/presentation/sales/widgets/collectible.dart';
-import 'package:accounting_app/presentation/sales/widgets/overdue.dart';
+import 'package:accounting_app/core/configs/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class WarehousePage extends StatefulWidget {
@@ -42,7 +39,7 @@ class _WarehousePageState extends State<WarehousePage>
           ),
         ),
         title: Text(
-          "Satışlar",
+          "Depolar",
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
         ),
         centerTitle: true,
@@ -52,50 +49,39 @@ class _WarehousePageState extends State<WarehousePage>
           Icon(Icons.search, size: 35),
           SizedBox(width: 15),
         ],
-        bottom: tabbar(),
       ),
-      body: TabBarView(
-        controller: _tabController,
-        children: const [All(), Collectible(), Overdue(), Canceled()],
-      ),
+      body: Center(child: Text("depo içerik")),
       floatingActionButton: FloatingActButton(
         size: 70,
         onPressed: () {},
-        bottomPadding: 20,
+        bottomPadding: 0,
       ),
-    );
-  }
-
-  TabBar tabbar() {
-    return TabBar(
-      isScrollable: true,
-      controller: _tabController,
-      tabs: const [
-        Tab(
-          child: Text(
-            "Tümü",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.symmetric(horizontal: 15),
+        alignment: Alignment.center,
+        height: 50,
+        width: double.infinity,
+        color: AppColors.thirdBackground,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "Depo sayısı",
+              style: TextStyle(
+                fontSize: 18, // Metin boyutunu büyüttük
+                fontWeight: FontWeight.w600, // Metni kalınlaştırdık
+              ),
+            ),
+            Text(
+              "1" + " kayıt",
+              style: TextStyle(
+                fontSize: 22, // Para birimi için daha da büyük yapabiliriz
+                fontWeight: FontWeight.w600, // Metni kalınlaştırdık
+              ),
+            ),
+          ],
         ),
-        Tab(
-          child: Text(
-            "Tahsil Edilecek",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-        ),
-        Tab(
-          child: Text(
-            "Gecikmiş",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-        ),
-        Tab(
-          child: Text(
-            "İptal Edilen",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-        ),
-      ],
+      ),
     );
   }
 }

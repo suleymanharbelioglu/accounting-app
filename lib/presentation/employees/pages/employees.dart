@@ -1,8 +1,7 @@
 import 'package:accounting_app/common/widgets/button/floating_act_button.dart';
-import 'package:accounting_app/presentation/sales/widgets/all.dart';
-import 'package:accounting_app/presentation/sales/widgets/canceled.dart';
-import 'package:accounting_app/presentation/sales/widgets/collectible.dart';
-import 'package:accounting_app/presentation/sales/widgets/overdue.dart';
+import 'package:accounting_app/presentation/employees/widgets/all.dart';
+import 'package:accounting_app/presentation/employees/widgets/given_advance.dart';
+import 'package:accounting_app/presentation/employees/widgets/payable.dart';
 import 'package:flutter/material.dart';
 
 class EmployeesPage extends StatefulWidget {
@@ -19,7 +18,7 @@ class _EmployeesPageState extends State<EmployeesPage>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 4, vsync: this);
+    _tabController = TabController(length: 3, vsync: this);
   }
 
   @override
@@ -42,7 +41,7 @@ class _EmployeesPageState extends State<EmployeesPage>
           ),
         ),
         title: Text(
-          "Satışlar",
+          "Çalışanlar",
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
         ),
         centerTitle: true,
@@ -56,7 +55,7 @@ class _EmployeesPageState extends State<EmployeesPage>
       ),
       body: TabBarView(
         controller: _tabController,
-        children: const [All(), Collectible(), Overdue(), Canceled()],
+        children: const [All(), Payable(), GivenAdvance()],
       ),
       floatingActionButton: FloatingActButton(
         size: 70,
@@ -79,19 +78,13 @@ class _EmployeesPageState extends State<EmployeesPage>
         ),
         Tab(
           child: Text(
-            "Tahsil Edilecek",
+            "Ödenecek",
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
         ),
         Tab(
           child: Text(
-            "Gecikmiş",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-        ),
-        Tab(
-          child: Text(
-            "İptal Edilen",
+            "Verilen Avans",
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
         ),

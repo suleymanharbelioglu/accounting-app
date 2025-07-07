@@ -1,8 +1,7 @@
 import 'package:accounting_app/common/widgets/button/floating_act_button.dart';
-import 'package:accounting_app/presentation/sales/widgets/all.dart';
-import 'package:accounting_app/presentation/sales/widgets/canceled.dart';
-import 'package:accounting_app/presentation/sales/widgets/collectible.dart';
-import 'package:accounting_app/presentation/sales/widgets/overdue.dart';
+import 'package:accounting_app/presentation/incoming_e_Invoices/widgets/approved.dart';
+import 'package:accounting_app/presentation/incoming_e_Invoices/widgets/pending_approvel.dart';
+import 'package:accounting_app/presentation/incoming_e_Invoices/widgets/rejected.dart';
 import 'package:flutter/material.dart';
 
 class IncomingEInvoicePage extends StatefulWidget {
@@ -19,7 +18,7 @@ class _IncomingEInvoicePageState extends State<IncomingEInvoicePage>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 4, vsync: this);
+    _tabController = TabController(length: 3, vsync: this);
   }
 
   @override
@@ -42,7 +41,7 @@ class _IncomingEInvoicePageState extends State<IncomingEInvoicePage>
           ),
         ),
         title: Text(
-          "Satışlar",
+          "Gelen e-Faturalar",
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
         ),
         centerTitle: true,
@@ -56,13 +55,13 @@ class _IncomingEInvoicePageState extends State<IncomingEInvoicePage>
       ),
       body: TabBarView(
         controller: _tabController,
-        children: const [All(), Collectible(), Overdue(), Canceled()],
+        children: const [PendingApprovel(), Approved(), Rejected()],
       ),
-      floatingActionButton: FloatingActButton(
-        size: 70,
-        onPressed: () {},
-        bottomPadding: 20,
-      ),
+      // floatingActionButton: FloatingActButton(
+      //   size: 70,
+      //   onPressed: () {},
+      //   bottomPadding: 20,
+      // ),
     );
   }
 
@@ -73,25 +72,19 @@ class _IncomingEInvoicePageState extends State<IncomingEInvoicePage>
       tabs: const [
         Tab(
           child: Text(
-            "Tümü",
+            "Onay bekleyen",
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
         ),
         Tab(
           child: Text(
-            "Tahsil Edilecek",
+            "Kabul edildi",
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
         ),
         Tab(
           child: Text(
-            "Gecikmiş",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-        ),
-        Tab(
-          child: Text(
-            "İptal Edilen",
+            "Reddedildi",
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
         ),
